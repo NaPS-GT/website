@@ -1,0 +1,19 @@
+# Python dependencies for building this site.
+#
+# Setup:
+#   python -m venv .venv
+#   .venv\Scripts\activate        # Windows
+#   source .venv/bin/activate     # macOS / Linux
+#   pip install -r requirements.txt
+#
+# Then `mkdocs serve` for a live preview, or `mkdocs build` to render to site/.
+#
+# Only direct dependencies are listed. mkdocs itself, pymdown-extensions, and
+# the rest arrive as dependencies of mkdocs-material. The version is pinned so
+# everyone builds identically; bump it deliberately and commit the change.
+
+mkdocs-material==9.7.7
+
+# Image lightbox — required by the `glightbox` plugin in mkdocs.yml. Without it
+# the build fails outright with "The 'glightbox' plugin is not installed".
+mkdocs-glightbox==0.5.2

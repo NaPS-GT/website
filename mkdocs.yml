@@ -1,0 +1,70 @@
+site_name: Nanotechnology and Photonics Society @ GT
+site_url: https://napsocietygt.github.io/website/
+theme:
+  name: material
+  favicon: assets/Buzz_cleanroom.svg
+  logo: assets/Buzz_cleanroom.svg
+  palette:
+    primary: custom
+  features:
+    # Lets a section heading be a clickable page in its own right, instead of
+    # needing a separate "Overview" child. The section's page is the first
+    # child in `nav` below, listed with no title of its own.
+    - navigation.indexes
+
+# Left sidebar order. Entries appear exactly in the order listed here, and
+# the label on the left of each colon overrides the page's H1 heading.
+# NOTE: once this block exists, any page NOT listed is left out of the nav.
+nav:
+  - Home: index.md
+  - Guides: 
+    # - Intro to FabuBlox: resources/fabublox-tutorial.md
+    - Conecting to ECE Server: guides/ece-server-tutorial.md
+    # - Intro to Silvaco TCAD: resources/silvaco-tcad.md
+  # - Projects:
+  #   # First child, no title: this IS the "Projects" page. Clicking the
+  #   # section heading opens it. The label comes from the `Projects:` key above.
+  #   - projects/index.md
+  #   # Real project pages go here. Keep every entry at this same indent level
+  #   # (4 spaces) — a deeper indent is a YAML parse error, not a sub-section.
+  #   - Singulation: projects/singulation.md
+  #   - Diffusion: projects/diffusion.md
+  #   - Wet Etch: projects/wet-etch.md
+  #   - Dry Etch: projects/dry-etch.md
+  #   - Photolithography: projects/photolithography.md
+  #   - Solution Processing: projects/solution-processing.md
+  #   - Physical Vapor Deposition: projects/physical-vapor-deposition.md
+  #   - Probe Station: projects/probe-station.md
+  #   - Packaging: projects/packaging.md
+  #   - Layout: projects/layout.md
+  #   - Process Simulation: projects/process-simulation.md
+  - Contributing: contributing.md
+
+markdown_extensions:
+  # Card grids need both: attr_list applies the `.grid cards` classes, and
+  # md_in_html lets Markdown inside the wrapping <div> still be parsed.
+  - attr_list
+  - md_in_html
+  # Note / warning / tip callout boxes.
+  - admonition
+  - pymdownx.details
+  # Captions for images
+  - pymdownx.blocks.caption
+  # Inline icons written as :fontawesome-brands-github:, :material-flask:, etc.
+  # Material bundles the FontAwesome, Octicons and Material icon sets.
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - glightbox
+
+extra_css:
+  - stylesheets/extra.css
