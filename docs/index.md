@@ -34,7 +34,7 @@ The purpose of the Nanotechnology and Photonics Society (NaPS) is to foster an e
 
     Our primary social media account, be sure to follow!
 
-    [:octicons-arrow-right-24: Follow instagram](https://www.instagram.com/nanotechgt)
+    [:octicons-arrow-right-24: Follow instagram](https://www.instagram.com/nanotechgt){:target="_blank"}
 
 </div>
 
