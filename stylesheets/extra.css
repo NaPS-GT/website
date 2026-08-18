@@ -1,0 +1,160 @@
+/* =============================================================================
+   Custom theme overrides for Material for MkDocs.
+   Palette: Georgia Tech navy (#051e39) + Tech Gold (#eaaa00) on a white page.
+
+   HOW OVERRIDING MATERIAL WORKS — read before adding rules here.
+
+   This file loads after the theme's own stylesheets, but "loads later" is not
+   enough to win on its own. Two things beat source order, and both have
+   already bitten this file:
+
+   1. Inheritance proximity. Because mkdocs.yml sets a `palette:`, Material
+      stamps data-md-color-scheme="default" onto <body> and declares its color
+      variables under that selector. Custom properties inherit, so a value set
+      on <body> shadows one set on <html> by `:root` for every element inside
+      the page. That is why the variable block below needs BOTH selectors —
+      do not reduce it to a plain `:root`.
+
+   2. Specificity. Several Material rules are scoped by a `[dir]` attribute,
+      e.g. `[dir=ltr] .md-header__title` (0,1,1). A bare `.md-header__title`
+      (0,1,0) loses to it no matter what order the files load in, so the
+      override below matches the `[dir=ltr]` scoping.
+
+   When a rule here appears to do nothing, check those two before changing the
+   value — the value is usually fine and the selector is the problem.
+   ========================================================================== */
+
+:root,
+[data-md-color-scheme="default"] {
+  /* --- Primary: the navy brand color ------------------------------------ */
+
+  /* Background of the header bar, the nav tabs, and the mobile nav drawer. */
+  --md-primary-fg-color: #051e39;
+
+  /* Darker navy, used only behind the repo/source block in the nav drawer. */
+  --md-primary-fg-color--dark: #031121;
+
+  /* Anything drawn ON the navy: site title, header icons, search field text. */
+  --md-primary-bg-color: #fff;
+
+  /* The same white at 70% alpha — used only for search placeholder text. */
+  --md-primary-bg-color--light: #ffffffb3;
+
+  /* --- Accent: the gold used for links and interactive states ------------ */
+
+  /* Color of every link in page body text. Deliberately a darkened bronze
+     rather than Tech Gold: body text needs 4.5:1 against white to clear WCAG
+     AA, and this sits at 4.6:1 where Tech Gold itself only reaches 2.0:1. */
+  --md-typeset-a-color: #8f713d;
+
+  /* Link hover, focus outlines, and the scrollbar thumb. Full Tech Gold.
+     Note this is 2.0:1 on white, so hovered link text is harder to read than
+     the resting state — darken toward #8f713d if that matters more than
+     matching the brand color exactly. */
+  --md-accent-fg-color: #eaaa00;
+
+  /* The same gold at 10% alpha — the hover fill behind search results,
+     pagination links, nav icons, content tabs, and code spans inside links.
+     Must be set explicitly: Material only defines it per built-in accent
+     palette, so leaving it out lets the default indigo tint show through. */
+  --md-accent-fg-color--transparent: #eaaa001a;
+
+  /* --- Page --------------------------------------------------------------- */
+
+  /* Background behind all page content. This currently matches Material's own
+     default; it is kept as the single knob to turn for a tinted page. If you
+     set it to a non-white color, also re-tint --md-default-bg-color--light,
+     --lighter and --lightest, which Material uses for overlays and fades. */
+  --md-default-bg-color: #ffffff;
+}
+
+/* =============================================================================
+   Header logo and title
+   ========================================================================== */
+
+/* Height of the logo in the header. Material's default is 1.2rem. */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2rem;
+}
+
+/* Gap to the right of the logo, tightening it toward the title.
+   Material's default is 0.4rem on all four sides. */
+.md-header__button.md-logo {
+  padding-right: 0.1rem;
+}
+
+/* Gap to the left of the site title, closing the rest of the way to the logo.
+   Material's default is 1rem. The [dir=ltr] prefix is required — see note 2
+   at the top of this file. */
+[dir="ltr"] .md-header__title {
+  margin-left: 0.3rem;
+}
+
+/* =============================================================================
+   Images
+   ========================================================================== */
+
+/* `{ .center }` on an image centers it in the content column at its natural
+   size, capped at the column width. Needed because Material leaves images
+   inline, so they sit at the left edge like a word of text would. */
+.md-typeset img.center {
+  display: block;
+  margin-inline: auto;
+}
+
+/* `{ .crop }` centers the image AND shows only a window onto it: the picture
+   fills a box of the given aspect ratio and whatever does not fit is trimmed,
+   evenly from both sides. Useful for making a tall or square photo sit in the
+   page as a banner without editing the file.
+
+   This is a display crop only — the browser still downloads the full-size
+   image, so also shrink the source file if it is heavy.
+
+   Both knobs are meant to be overridden per image with an inline style:
+
+     ![Alt](photo.jpg){ .crop style="aspect-ratio: 4/3; max-width: 40rem" }
+
+   To keep a different part of the frame when the crop cuts something
+   important, add `object-position: center top` (or `left`, `bottom`, a
+   percentage, etc.) the same way. */
+.md-typeset img.crop {
+  display: block;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 30rem;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* The glightbox plugin wraps every image in an <a> for the click-to-zoom
+   overlay. That anchor is inline, which leaves stray line-height above and
+   below a block-level image; matching the anchor to the image removes it. */
+.md-typeset a:has(> img.center),
+.md-typeset a:has(> img.crop) {
+  display: block;
+}
+
+/* =============================================================================
+   Embedded Office documents (SharePoint / OneDrive iframes)
+   ========================================================================== */
+
+/* Wrapper around an embedded spreadsheet or document. Carries the visible
+   border so the embed reads as a distinct block rather than floating in the
+   page, and supplies the vertical spacing. */
+.office-embed {
+  margin: 1em 0;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* The frame itself. Width tracks the content column so the embed stays inside
+   the page on mobile; height is a fixed pixel value rather than an aspect
+   ratio so a useful number of rows stays visible at any width. Raise it on a
+   single embed with style="height:800px" on the wrapping div. */
+.office-embed iframe {
+  display: block;
+  width: 100%;
+  height: 600px;
+  border: 0;
+}

@@ -1,0 +1,625 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://napsocietygt.github.io/website/guides/ece-server-tutorial/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../contributing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/Buzz_cleanroom.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Conecting to ECE Server - Nanotechnology and Photonics Society @ GT</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#connecting-to-ece-servers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nanotechnology and Photonics Society @ GT" class="md-header__button md-logo" aria-label="Nanotechnology and Photonics Society @ GT" data-md-component="logo">
+      
+  <img src="../../assets/Buzz_cleanroom.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nanotechnology and Photonics Society @ GT
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Conecting to ECE Server
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nanotechnology and Photonics Society @ GT" class="md-nav__button md-logo" aria-label="Nanotechnology and Photonics Society @ GT" data-md-component="logo">
+      
+  <img src="../../assets/Buzz_cleanroom.svg" alt="logo">
+
+    </a>
+    Nanotechnology and Photonics Society @ GT
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conecting to ECE Server
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conecting to ECE Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#available-serversmachines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available Servers/Machines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gt-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GT VPN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MacOS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#available-serversmachines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available Servers/Machines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gt-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GT VPN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MacOS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="connecting-to-ece-servers">Connecting to ECE Servers</h1>
+<p>The GT ECE department offers licensed software such as Cadence, Silvaco, Synopsys, etc. on an open server that is accessible to all GT ECE students as long as you are enrolled in an ECE class. The server is intended to be connected to remoted through through X11 forwarding over SSH, and this page will show you how to do it on the three most common operating systems.</p>
+<p>The licenses are also available on the PCs in Klaus 1448 during weekdays, so you can consider them if you cannot connect to the server remotely. Note that any processes found running on these local machines for longer than 8 hours will be terminated.</p>
+<h2 id="available-serversmachines">Available Servers/Machines</h2>
+<div class="admonition warning">
+<p class="admonition-title">Items to Note</p>
+<p>Temporary files and directories more than two weeks old on these machines are deleted daily (/usr/scratch). Jobs are limited to a total of two interactive or background process per login across all of the machines listed below. Accounts found running more than this may be subject to termination of their background processes or login session at the discretion of the CSG. Flagrant or repeated violations may in extreme cases be subject to suspension or revocation of account privileges.</p>
+</div>
+<ul>
+<li>ece-linlabsrv01.ece.gatech.edu<ul>
+<li>For academic and classroom labs</li>
+<li>Max process run time of 8 hours</li>
+</ul>
+</li>
+<li>ece-rschsrv.ece.gatech.edu<ul>
+<li>For research</li>
+<li>Need to have advisor approval and sign EULA</li>
+</ul>
+</li>
+<li>ece-linlab01.ece.gatech.edu - ece-linlab26.ece.gatech.edu<ul>
+<li>Local machines in Klaus 1448</li>
+</ul>
+</li>
+</ul>
+<h2 id="gt-vpn">GT VPN</h2>
+<p>To securely connect to the ECE servers and machines, you must be connected to the GT virtual private network (VPN). Note that you cannot use the web VPN and must install the GlobalProtect software. To install the VPN, go to <a href="https://vpn.gatech.edu/" target="target">OIT's VPN Service</a> and follow the instructions there.</p>
+<h2 id="windows">Windows</h2>
+<ol>
+<li>Install the <a href="https://starnet.com/download/fastx-client" target="target">FastX client</a>, a software to establish an SSH connection on Windows.</li>
+<li>Login on the local GlobalProtect VPN software with your GT credentials. You will need to do 2FA with DUO, so keep your phone around. Once you have successfully connected, the globe icon should be blue.</li>
+<li>Open FastX and click the plus sign to add a new connection. Fill out the pop-up form as shown. The following example shows a connection to the LinLabs server; simply switch the "Host" field for a different server/machine. For user, use your GT username.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ece-server-tutorial/1.png" data-desc-position="bottom"><img alt="alt text" src="../assets/ece-server-tutorial/1.png"></a></li>
+<li>Click the new entry, then enter your GT password in the following pane.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ece-server-tutorial/2.png" data-desc-position="bottom"><img alt="alt text" src="../assets/ece-server-tutorial/2.png"></a></li>
+<li>Upon a successful login, you will see a window for managing sessions, as shown below.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ece-server-tutorial/3.png" data-desc-position="bottom"><img alt="alt text" src="../assets/ece-server-tutorial/3.png"></a></li>
+<li>Click the plus sign, then select "xterm" and click "OK".
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ece-server-tutorial/4.png" data-desc-position="bottom"><img alt="alt text" src="../assets/ece-server-tutorial/4.png"></a></li>
+<li>You're done! Now you should see a window with a terminal. This terminal allow you to run commands on the server to launch applications. Note that all servers has a RHEL OS, so familiarize yourself with Linux commands in order to use the tool effectively.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/ece-server-tutorial/5.png" data-desc-position="bottom"><img alt="alt text" src="../assets/ece-server-tutorial/5.png"></a></li>
+</ol>
+<h2 id="macos">MacOS</h2>
+<div class="admonition warning">
+<p class="admonition-title">Work in Progress</p>
+<p>Need someone with a MacOS computer to write the steps</p>
+</div>
+<h2 id="linux">Linux</h2>
+<div class="admonition warning">
+<p class="admonition-title">OS Compatibility</p>
+<p>Because GT's GlobalProtect VPN only supports Ubuntu, the only flavor of Linux that can be used to reliably access the ECE servers/machines is Ubuntu.</p>
+</div>
+<ol>
+<li>Login on the local GlobalProtect VPN software with your GT credentials. You will need to do 2FA with DUO, so keep your phone around. Once you have successfully connected, the globe icon should be blue.</li>
+<li>Open a terminal and run <code>ssh -Y gburdell12@ece-linlabsrv01.ece.gatech.edu</code>.</li>
+<li>You're done! And since you already use Linux as you day-to-day OS, you know what to do.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
